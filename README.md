@@ -4,17 +4,17 @@ Este proyecto es un sistema de gestión web completo para un cine, diseñado com
 
 ---
 
-## ⚠️ Antes de correr el proyecto
+##  Antes de correr el proyecto
 1. Abre `.env` y coloca tu **contraseña real de PostgreSQL** en `DB_PASSWORD` (quedó con un valor de ejemplo por seguridad).
 2. Nunca compartas o subas tu archivo `.env` real a ningún lado (ya se agregó `.gitignore` para evitarlo). Usa `.env.example` como plantilla sin datos reales.
 
 ## Correcciones aplicadas a la primera versión generada
-- 🔴 **Crítico**: el trigger `fn_trg_boletos_validar_insert` sobreescribía `asiento_id` del boleto con el ID del tipo de asiento en vez de validar contra una variable propia — cada boleto quedaba asociado al asiento incorrecto. Corregido.
-- 🟠 Varios endpoints (`candy.js`, `promos.js`, `shows.js`, `tickets.js`) respondían con el código HTTP inválido `21` en operaciones exitosas, lo que el frontend interpretaba como error. Corregido a `201`.
-- 🟡 No había validación de funciones duplicadas (misma sala/fecha/hora). Se agregó una restricción única en la base de datos (`uq_funcion_sala_fecha_hora`) y su manejo amigable en el backend.
-- 🟡 `fetchAPI` fallaba si el backend respondía sin cuerpo o con contenido no-JSON. Ahora lo maneja sin romper la app.
-- 🟡 La sesión guardada en `localStorage` podía romper la carga de la app si quedaba corrupta. Ahora se limpia automáticamente.
-- 🟡 Faltaba la interfaz para que el administrador gestionara (crear/editar/eliminar) productos de dulcería — el backend ya lo soportaba pero no había botón ni formulario. Se agregó.
+-  **Crítico**: el trigger `fn_trg_boletos_validar_insert` sobreescribía `asiento_id` del boleto con el ID del tipo de asiento en vez de validar contra una variable propia — cada boleto quedaba asociado al asiento incorrecto. Corregido.
+-  Varios endpoints (`candy.js`, `promos.js`, `shows.js`, `tickets.js`) respondían con el código HTTP inválido `21` en operaciones exitosas, lo que el frontend interpretaba como error. Corregido a `201`.
+-  No había validación de funciones duplicadas (misma sala/fecha/hora). Se agregó una restricción única en la base de datos (`uq_funcion_sala_fecha_hora`) y su manejo amigable en el backend.
+-  `fetchAPI` fallaba si el backend respondía sin cuerpo o con contenido no-JSON. Ahora lo maneja sin romper la app.
+-  La sesión guardada en `localStorage` podía romper la carga de la app si quedaba corrupta. Ahora se limpia automáticamente.
+-  Faltaba la interfaz para que el administrador gestionara (crear/editar/eliminar) productos de dulcería — el backend ya lo soportaba pero no había botón ni formulario. Se agregó.
 
 ---
 
